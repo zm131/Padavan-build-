@@ -55,6 +55,12 @@ jobs:
         # 因不同型号配置功能不一样，所以先把配置项删除，如果你自己要添加其他的，也要写上删除这一条，切记！！！
         ###################################################################################################
         sed -i '/CONFIG_FIRMWARE_INCLUDE_LANG_UK/d' .config      #删除配置项英文界面
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_QOS/d' .config          #删除配置项QOS
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_SMBD36/d' .config       #删除配置项SMBD36
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_DDNS_SSL/d' .config     #删除配置项DDNS_SSL
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_HTTPS/d' .config        #删除配置项HTTPS
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_OPENVPN/d' .config      #删除配置项OPENVPN
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_FFMPEG_NEW/d' .config   #删除配置项FFMPEG_NEW
         sed -i '/CONFIG_FIRMWARE_INCLUDE_XUPNPD/d' .config       #删除配置项XUPNPD
         sed -i '/CONFIG_FIRMWARE_INCLUDE_DOGCOM/d' .config       #删除配置项DOGCOM
         sed -i '/CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS/d' .config  #删除配置项SS plus+
@@ -68,11 +74,17 @@ jobs:
         # 以下选项是定义你需要的功能（y=集成,n=忽略），重新写入到.config文件。
         ####################################################################
         echo "CONFIG_FIRMWARE_INCLUDE_LANG_CN=y" >> .config      #设置界面简体中文
-        echo "CONFIG_FIRMWARE_INCLUDE_XUPNPD=n" >> .config       #删除用于IPTV的XUPNP
-        echo "CONFIG_FIRMWARE_INCLUDE_DOGCOM=n" >> .config       #删除用于Drcom的工具
+        echo "CONFIG_FIRMWARE_INCLUDE_QOS=n" >> .config          #删除QOS
+        echo "CONFIG_FIRMWARE_INCLUDE_SMBD36=y" >> .config       #使用SMBD36新版本
+        echo "CONFIG_FIRMWARE_INCLUDE_DDNS_SSL=n" >> .config     #删除DDNS_SSL
+        echo "CONFIG_FIRMWARE_INCLUDE_HTTPS=n" >> .config        #删除HTTPS
+        echo "CONFIG_FIRMWARE_INCLUDE_OPENVPN=n" >> .config      #删除OPENVPN
+        echo "CONFIG_FIRMWARE_INCLUDE_FFMPEG_NEW=y" >> .config   #使用FFMPEG新版本
+        echo "CONFIG_FIRMWARE_INCLUDE_XUPNPD=n" >> .config       #删除用于IPTV的XUPNPD
+        echo "CONFIG_FIRMWARE_INCLUDE_DOGCOM=n" >> .config       #删除用于Drcom的工具DOGCOM
         echo "CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS=n" >> .config  #删除SS plus+
         echo "CONFIG_FIRMWARE_INCLUDE_DNSFORWARDER=n" >> .config #删除DNSFORWARDER
-        echo "CONFIG_FIRMWARE_INCLUDE_VLMCSD=n" >> .config       #删除用于KMS的工具
+        echo "CONFIG_FIRMWARE_INCLUDE_VLMCSD=n" >> .config       #删除用于KMS的工具VLMCSD
         echo "CONFIG_FIRMWARE_INCLUDE_TTYD=n" >> .config         #删除网页终端模拟器TTYD
         echo "CONFIG_FIRMWARE_INCLUDE_NAPT66=n" >> .config       #删除用于二级路由、教育网分发IPv6地址的NAPT66
         echo "CONFIG_FIRMWARE_INCLUDE_SRELAY=n" >> .config       #删除SRELAY

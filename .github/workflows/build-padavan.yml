@@ -55,17 +55,27 @@ jobs:
         # 因不同型号配置功能不一样，所以先把配置项删除，如果你自己要添加其他的，也要写上删除这一条，切记！！！
         ###################################################################################################
         sed -i '/CONFIG_FIRMWARE_INCLUDE_LANG_UK/d' .config      #删除配置项英文界面
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_XUPNPD/d' .config       #删除配置项XUPNPD
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_DOGCOM/d' .config       #删除配置项DOGCOM
         sed -i '/CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS/d' .config  #删除配置项SS plus+
         sed -i '/CONFIG_FIRMWARE_INCLUDE_DNSFORWARDER/d' .config #删除配置项DNSFORWARDER
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_SRELAY/d' .config
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_VLMCSD/d' .config       #删除配置项VLMCSD
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_TTYD/d' .config         #删除配置项TTYD
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_NAPT66/d' .config       #删除配置项NAPT66
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_SRELAY/d' .config       #删除配置项SRELAY
         sed -i 's/CONFIG_FIRMWARE_INCLUDE_OPENSSL_EXE=n/CONFIG_FIRMWARE_INCLUDE_OPENSSL_EXE=y/g' .config
         ####################################################################
         # 以下选项是定义你需要的功能（y=集成,n=忽略），重新写入到.config文件。
         ####################################################################
-        echo "CONFIG_FIRMWARE_INCLUDE_LANG_CN=y" >> .config      #简体中文
-        echo "CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS=n" >> .config  #SS plus+
-        echo "CONFIG_FIRMWARE_INCLUDE_DNSFORWARDER=n" >> .config #DNSFORWARDER
-        echo "CONFIG_FIRMWARE_INCLUDE_SRELAY=n" >> .config       #可以不集成
+        echo "CONFIG_FIRMWARE_INCLUDE_LANG_CN=y" >> .config      #设置界面简体中文
+        echo "CONFIG_FIRMWARE_INCLUDE_XUPNPD=n" >> .config       #删除用于IPTV的XUPNP
+        echo "CONFIG_FIRMWARE_INCLUDE_DOGCOM=n" >> .config       #删除用于Drcom的工具
+        echo "CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS=n" >> .config  #删除SS plus+
+        echo "CONFIG_FIRMWARE_INCLUDE_DNSFORWARDER=n" >> .config #删除DNSFORWARDER
+        echo "CONFIG_FIRMWARE_INCLUDE_VLMCSD=n" >> .config       #删除用于KMS的工具
+        echo "CONFIG_FIRMWARE_INCLUDE_TTYD=n" >> .config         #删除网页终端模拟器TTYD
+        echo "CONFIG_FIRMWARE_INCLUDE_NAPT66=n" >> .config       #删除用于二级路由、教育网分发IPv6地址的NAPT66
+        echo "CONFIG_FIRMWARE_INCLUDE_SRELAY=n" >> .config       #删除SRELAY
         #########################################################################################
         # 自定义添加其它功能请参考源码configs/templates/目录下的config文件。按照上面的格式添加即可
         # 格式如下：
